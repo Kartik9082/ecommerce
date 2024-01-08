@@ -15,6 +15,7 @@ const ProductList = ({ title, product }) => {
               category={products.category}
               desc={products.description}
               image={products.image}
+              id={products}
             />
           ))}
       </div>

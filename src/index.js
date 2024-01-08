@@ -10,16 +10,18 @@ import Contact from "./Pages/Contact";
 import Home from "./Pages/Home";
 import Footer from "./components/Footer";
 import appStore from "./redux/appStore";
-
+import Cart from "./Pages/Cart";
+import LoginSignup from "../src/Pages/LoginSignup";
 
 function AppLayout() {
-  
   return (
     <>
       <Provider store={appStore}>
-        <Header />
-        <Outlet />
-        <Footer />
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          <Outlet />
+          <Footer />
+        </div>
       </Provider>
     </>
   );
@@ -45,6 +47,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/login",
+        element: <LoginSignup />,
       },
     ],
   },

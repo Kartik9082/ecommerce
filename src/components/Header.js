@@ -4,10 +4,15 @@ import Logo from "../assest/logo.png";
 import { Link } from "react-router-dom";
 import useProducts from "../Hooks/useProducts";
 import useWomenProduct from "../Hooks/useWomenProduct";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   useProducts();
   useWomenProduct();
+
+  const cratItems = useSelector((store) => store.cart.items);
+  // console.log(cratItems)
+  
   return (
     <div className="flex justify-around m-0">
       <Link to="/home"><img className="w-44 h-6 mt-14" src={Logo} alt="logo" /></Link>
@@ -36,7 +41,7 @@ const Header = () => {
           <li className="px-5 my-0 flex items-center">
             <Link to="/cart">
               {" "}
-              🛒Cart
+              🛒<span>({cratItems.length})</span>
             </Link>
           </li>
         </ul>
