@@ -9,4 +9,7 @@ const appStore = configureStore({
   },
 });
 
+// console.log("Initial Cart State:", appStore.getState().cart);
+
+
 export default appStore;

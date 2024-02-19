@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import appStore from "./redux/appStore";
 import Cart from "./Pages/Cart";
 import LoginSignup from "../src/Pages/LoginSignup";
+import ProductInfo from "./components/ProductInfo";
 
 function AppLayout() {
   return (
@@ -55,6 +56,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/login",
         element: <LoginSignup />,
+      },
+      {
+        path: "/products/:id",
+        element: <ProductInfo />,
       },
     ],
   },

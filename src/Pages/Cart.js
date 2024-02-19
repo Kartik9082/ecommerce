@@ -4,30 +4,40 @@ import { useSelector } from "react-redux";
 import EmptyCart from "../components/EmptyCart";
 
 const Cart = () => {
-  const cratItems = useSelector((store) => store.cart.items);
-  //   console.log("Hello", cratItems);
-  return (
-    <>
-      {cratItems.length === 0 ? (
+  const cartItems = useSelector((store) => store.cart.items);
+  // console.log("Hello", cratItems);
+  // console.log("Cart Items:", cartItems);
+
+  // if(cratItems.length === 0 ) return <ShimmerCard />
+
+// ...
+
+return (
+  <>
+    {cartItems ? ( // Add this check
+      cartItems.length === 0 ? (
         <EmptyCart />
       ) : (
-        <div className="flex justify-evenly m-4 ">
+        <div className="flex justify-evenly m-4">
           <div className="">
             <h1 className="text-2xl">Your Cart</h1>
             <div className="m-2 p-4">
-              {cratItems.map((item) => (
-                <CartItemList item={item} />
+              {cartItems.map((item) => (
+                <CartItemList key={item?.id} item={item} />
               ))}
-              {/* <CartItemList items={cratItems} /> */}
             </div>
           </div>
           <div>
             <h1 className="text-2xl">Summary</h1>
           </div>
         </div>
-      )}
-    </>
-  );
+      )
+    ) : (
+      <p>Loading...</p> // Add a loading indicator or handle the loading state as needed
+    )}
+  </>
+);
+
 };
 
 export default Cart;

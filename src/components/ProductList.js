@@ -1,7 +1,10 @@
 import React from "react";
 import ProductCard from "./ProductCard";
 
+import ShimmerCard from "../components/Shimmer";
+
 const ProductList = ({ title, product }) => {
+  if (product === null) return <ShimmerCard />;
 
   return (
     <div className="flex  overflow-x-scroll no-scrollbar">
@@ -10,12 +13,13 @@ const ProductList = ({ title, product }) => {
           product.map((products) => (
             <ProductCard
               key={products.id}
+              id={products.id}
+              productId={products}
               title={products?.title}
               price={products.price}
               category={products.category}
               desc={products.description}
               image={products.image}
-              id={products}
             />
           ))}
       </div>
